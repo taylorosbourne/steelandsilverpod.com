@@ -41,7 +41,7 @@ const Layout = ({ children }) => {
             &#169; Steel & Silver Podcast 2019, Produced by Taylor Osbourne and Charlie Boettcher
           </p>
           <p style={{fontSize: `0.65rem`, padding: 0, margin: 0}}>
-            Site built and designed by Taylor Osbourne.  Built with <a style={{cursor: `pointer`, color: `#663399`, fontWeight: `700`}}>Gatsby</a>, hosted on <a style={{cursor: `pointer`, color: `#029387`, fontWeight: `700`}}>Netlify</a>, chillin on <a style={{cursor: `pointer`, color: `#2CAE48`, fontWeight: `700`}}>Github</a>.
+            Site built and designed by Taylor Osbourne.  Built with <a href="https://www.gatsbyjs.org/" style={{cursor: `pointer`, color: `#663399`, fontWeight: `700`}}>Gatsby</a>, hosted on <a href="https://www.netlify.com/" style={{cursor: `pointer`, color: `#029387`, fontWeight: `700`}}>Netlify</a>, chillin on <a href="https://github.com/" style={{cursor: `pointer`, color: `#2CAE48`, fontWeight: `700`}}>Github</a>.
           </p>
         </footer>
     </>

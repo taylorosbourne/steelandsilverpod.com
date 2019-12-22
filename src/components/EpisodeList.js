@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Episode from './Episode';
 
@@ -15,32 +16,31 @@ const Episodes = styled.div`
   width: 100%;
 `;
 
-const EpisodeList = () => (
+const EpisodeList = ({episodes}) => (
   <EpisodeContainer>
     <h2 className="section-header" style={{width: `100%`}}>recent episodes</h2>
-    <Episodes>
-      <Episode>
-        <h3>Episode IV: Hearts of stone with Brett from 'Whispers of Oxenfurt'</h3>
-        <small style={{color: `rgb(42,42,42)`}}>December 20, 2019</small>
-        <p style={{color: `rgb(42,42,42)`}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      </Episode>
-    </Episodes>
-    <Episodes>
-      <Episode>
-        <h3 style={{textTransform: `uppercase`}}>Episode III: Our Witcher netflix cast picks</h3>
-        <small style={{color: `rgb(42,42,42)`}}>December 20, 2019</small>
-        <p style={{color: `rgb(42,42,42)`}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      </Episode>
-    </Episodes>
-    <Episodes>
-      <Episode>
-        <h3 style={{textTransform: `uppercase`}}>Episode II: Witcher 2077: Cyberpunk gameplay reaction</h3>
-        <small style={{color: `rgb(42,42,42)`}}>December 20, 2019</small>
-        <p style={{color: `rgb(42,42,42)`}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      </Episode>
-    </Episodes>
+    {episodes.map((episode, i) => {
+      const { frontmatter, id } = episode.node;
+      const { path, title, date, description } = frontmatter;
+
+      return (
+        <Episodes
+          key={id}
+          style={{}}
+          id={i === 0 ? 'main' : null}
+        >
+          <h3>
+            <Link style={{textDecoration: `none`, color: `teal`}} to={path}>{title}</Link>
+          </h3>
+          <small style={{color: `rgb(42,42,42)`, fontFamily: `Helvetica`}}>
+            {date}
+          </small>
+          <Episode>{description}</Episode>
+        </Episodes>
+      );
+    })}
     <div style={{textAlign: `left`, width: `100%`, padding: `5px`}}>
-      <a style={{textTransform: `uppercase`, color: `teal`, fontFamily: `Helvetica`}}>View All episodes</a>
+      <a href="https://google.com" style={{textTransform: `uppercase`, color: `teal`, fontFamily: `Helvetica`}}>View All episodes</a>
     </div>
   </EpisodeContainer>
 );

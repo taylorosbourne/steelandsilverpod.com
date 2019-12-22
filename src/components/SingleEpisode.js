@@ -1,5 +1,4 @@
 import React from 'react';
-import Episode from './Episode';
 import styled from 'styled-components';
 
 const StyledEpisode = styled.div`
@@ -7,6 +6,10 @@ const StyledEpisode = styled.div`
   color: rgb(42,42,42);
   width: 100%;
   font-family: Helvetica;
+  a {
+    text-decoration: none;
+    color: teal;
+  }
   h3 {
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -15,8 +18,8 @@ const StyledEpisode = styled.div`
   }
 `;
 
-const SingleEpisode = ({title, date, __html}) => (
-  <>
+const SingleEpisode = ({title, date, __html, audio}) => (
+  <div style={{maxWidth: 860, margin: `0 auto`}}>
     <br />
     <br />
     <h1 style={{fontWeight: `400`,color: `teal`}}>{title}</h1>
@@ -25,7 +28,7 @@ const SingleEpisode = ({title, date, __html}) => (
       id="main"
       dangerouslySetInnerHTML={{ __html }}
     />
-  </>
+  </div>
 );
 
 export default SingleEpisode;

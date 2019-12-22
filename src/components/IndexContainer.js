@@ -36,7 +36,7 @@ const PatreonImage = styled.img`
   }
 `;
 
-const IndexContainer = () => (
+const IndexContainer = ({episodes}) => (
   <Container>
     <div style={{margin: `15px 0`, display: `flex`, flexDirection: `column`, alignItems: `flex-start`}}>
       <img style={{width: `100%`, borderRadius:  `15px`}} src={Thumbnail} alt="podcast-thumbnail" />
@@ -52,7 +52,7 @@ const IndexContainer = () => (
       </div>
     </div>
     <div>
-      <EpisodeList />
+      <EpisodeList episodes={episodes} />
       <Hosts />
       <ContactForm />
     </div>

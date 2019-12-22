@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledEpisode = styled.div`
-  padding: 5px;
-  color: teal;
+  color: rgb(42,42,42);
   width: 100%;
   font-family: Helvetica;
   h3 {
