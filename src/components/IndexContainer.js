@@ -48,7 +48,7 @@ const IndexContainer = () => (
       </TwitterContainer>
       <div style={{width: `100%`}}>
         <h2 className="section-header">Patreon</h2>
-        <PatreonImage src={Patreon} alt="patreon" />
+        <a target="_blank" rel="noopener noreferrer" href="https://www.patreon.com/steelandsilverpod" alt="patreon-link"><PatreonImage src={Patreon} alt="patreon" /></a>
       </div>
     </div>
     <div>
