@@ -73,16 +73,32 @@ const SubmitButton = styled.button`
 const ContactForm = () => {
   const classes = useStyles();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formValues, setFormValues] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setFormValues({...formValues, [name]: value})
+  }
 
   const handleSubmit = e => {
     e.preventDefault();
     setIsSubmitted(true);
+    setFormValues({
+      name: '',
+      email: '',
+      message: ''
+    })
   }
 
   return (
     <div style={{margin: `55px 0`}}>
       <h2 className="section-header">Contact</h2>
       <Form 
+        name="contact"
         className={classes.root} 
         noValidate autoComplete="off" 
         method="POST" 
@@ -95,6 +111,8 @@ const ContactForm = () => {
           name="name"
           placeholder="Geralt of Rivia"
           multiline
+          onChange={handleChange}
+          value={formValues.name}
           style={{width: `100%`}}
         />
         <TextField
@@ -103,6 +121,8 @@ const ContactForm = () => {
           name="email"
           placeholder="geralt@riv.ia"
           multiline
+          onChange={handleChange}
+          value={formValues.email}
           style={{width: `100%`}}
         />
         <TextField
@@ -111,6 +131,8 @@ const ContactForm = () => {
           name="message"
           placeholder="Good luck on the path..."
           multiline
+          onChange={handleChange}
+          value={formValues.message}
           variant="outlined"
           style={{width: `100%`, marginTop: `25px`}}
         />
