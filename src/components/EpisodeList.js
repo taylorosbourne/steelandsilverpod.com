@@ -8,17 +8,18 @@ const EpisodeContainer = styled.div`
   display: flex;
   flex-direction: column;
   * {
-    margin: 10px auto;
+    margin: 10px 0;
   }
 `;
 
 const Episodes = styled.div`
   width: 100%;
+  margin-left: 5px;
 `;
 
 const EpisodeList = ({episodes}) => (
   <EpisodeContainer>
-    <h2 className="section-header" style={{width: `100%`}}>recent episodes</h2>
+    <h2 className="section-header" style={{width: `100%`, marginTop: `25px`}}>recent episodes</h2>
     {episodes.map((episode, i) => {
       const { frontmatter, id } = episode.node;
       const { path, title, date, description } = frontmatter;

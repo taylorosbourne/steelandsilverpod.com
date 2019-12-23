@@ -10,7 +10,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 300px 1fr;
   grid-gap: 40px;
-  @media(max-width: 1000px) {
+  @media(max-width: 600px) {
     display: flex;
     flex-direction: column;
     * {

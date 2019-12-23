@@ -1,53 +1,41 @@
 import React from 'react';
 import styled from 'styled-components';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: 200,
+    },
+    '& label.Mui-focused': {
+      color: 'teal',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'teal',
+    },
+    '& .MuiOutlinedInput-root': {
+      '&.Mui-focused fieldset': {
+        borderColor: 'teal',
+      },
+    }
+  },
+}));
 
 const Form = styled.form`
-  width: 80%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-  @media(max-width: 800px) {
-    width: 100%;
+  width: 70%;
+  margin: 0;
+  padding: 0;
+  @media(max-width: 1100px) {
+    max-width: 90%;
   }
 `;
 
-const ContactInput = styled.input`
-  font-size: 1.5rem;
-  font-family: 'Helvetica';
-  margin: 15px 15px 15px 0px;
-  border: 0;
-  border-bottom: 1.5px solid rgba(0,0,0,0.1);
-  :focus {
-    outline: none;
-    border-bottom: 1.5px solid teal;
-  }
-  @media(max-width: 800px) {
-    width: 100%;
-  }
-`;
-
-const ContactMessage = styled.textarea`
-  border: 1px solid rgba(0,0,0,0.1);
-  border-radius: 5px;
-  max-width: 90%;
-  min-width: 90%;
-  padding: 5px;
-  margin: 15px 0;
-  min-height: 200px;
-  font-size: 1.5rem;
-  font-family: Helvetica;
-  :focus {
-    outline: none;
-    border: 1.5px solid teal;
-  }
-  @media(max-width: 800px) {
-    width: 100%;
-  }
-`;
 
 const SubmitButton = styled.button`
   background: rgb(242,242,242);
+  display: block;
   text-transform: uppercase;
   color: teal;
   font-family: Helvetica;
@@ -57,7 +45,7 @@ const SubmitButton = styled.button`
   border-left: 3px solid teal;
   border-bottom: 3px solid teal;
   border-radius: 5px;
-  margin: 15px 0;
+  margin: 15px 8px;
   cursor: pointer;
   :focus {
     outline: none;
@@ -77,21 +65,57 @@ const SubmitButton = styled.button`
       border-bottom: 3px solid teal;
     }
   }
-  @media(max-width: 800px) {
+  @media(max-width: 1100px) {
     width: 100%;
   }
 `;
 
-const ContactForm = () => (
-  <div style={{margin: `55px 0`}}>
-    <h2 className="section-header">Contact</h2>
-    <Form>
-      <ContactInput type="text" placeholder="name" />
-      <ContactInput type="email" placeholder="email" />
-      <ContactMessage placeholder="good luck on the path..."></ContactMessage>
-      <SubmitButton onClick={e => e.preventDefault()}>Submit </SubmitButton>
-    </Form>
-  </div>
-);
+const ContactForm = () => {
+  const classes = useStyles();
+  const [value, setValue] = React.useState('Controlled');
 
+  const handleChange = event => {
+    setValue(event.target.value);
+  };
+
+  return (
+    <div style={{margin: `55px 0`}}>
+      <h2 className="section-header">Contact</h2>
+      <Form 
+        className={classes.root} 
+        noValidate autoComplete="off" 
+      >
+        <TextField
+          id="standard-textarea"
+          label="Name"
+          placeholder="Geralt of Rivia"
+          multiline
+          style={{width: `100%`}}
+        />
+        <TextField
+          id="standard-textarea"
+          label="Email"
+          placeholder="geralt@riv.ia"
+          multiline
+          style={{width: `100%`}}
+        />
+        <TextField
+          id="outlined-textarea"
+          label="Message"
+          placeholder="Good luck on the path..."
+          multiline
+          variant="outlined"
+          style={{width: `100%`, marginTop: `25px`}}
+        />
+        <SubmitButton onClick={e => e.preventDefault()}>Submit </SubmitButton>
+      </Form>
+      {/* <Form>
+        <ContactInput type="text" placeholder="name" />
+        <ContactInput type="email" placeholder="email" />
+        <ContactMessage placeholder="good luck on the path..."></ContactMessage>
+        <SubmitButton onClick={e => e.preventDefault()}>Submit </SubmitButton>
+      </Form> */}
+    </div>
+  );
+}
 export default ContactForm;

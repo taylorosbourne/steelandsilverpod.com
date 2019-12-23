@@ -14,6 +14,7 @@ const EpisodeContainer = styled.div`
 
 const Episode = styled.div`
   width: 100%;
+  margin-left: 5px;
 `;
 
 const Episodes = ({data}) => {
