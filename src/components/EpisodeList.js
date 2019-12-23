@@ -40,7 +40,7 @@ const EpisodeList = ({episodes}) => (
       );
     })}
     <div style={{textAlign: `left`, width: `100%`, padding: `5px`}}>
-      <a href="https://google.com" style={{textTransform: `uppercase`, color: `teal`, fontFamily: `Helvetica`}}>View All episodes</a>
+      <Link to="/episodes" style={{textTransform: `uppercase`, color: `teal`, fontFamily: `Helvetica`}}>View All episodes</Link>
     </div>
   </EpisodeContainer>
 );

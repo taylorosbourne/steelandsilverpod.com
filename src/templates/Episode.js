@@ -5,10 +5,10 @@ import SingleEpisode from '../components/SingleEpisode';
 
 const EpisodeTemplate = ({ data }) => {
   const { html: __html } = data.markdownRemark;
-  const { title, date } = data.markdownRemark.frontmatter;
+  const { title, date, audio } = data.markdownRemark.frontmatter;
   return (
     <Layout>
-      <SingleEpisode __html={__html} title={title} date={date} />
+      <SingleEpisode __html={__html} audio={audio} title={title} date={date} />
     </Layout>
   );
 };
