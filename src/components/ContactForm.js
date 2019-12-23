@@ -79,19 +79,33 @@ const ContactForm = () => {
     message: ''
   });
 
+  const encode = (data) => {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .join("&");
+  }
+
   const handleChange = e => {
     const { name, value } = e.target;
     setFormValues({...formValues, [name]: value})
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = e => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...formValues })
+    })
+      .catch(error => alert(error));
+    
     setIsSubmitted(true);
     setFormValues({
       name: '',
       email: '',
       message: ''
     })
-  }
+    e.preventDefault();
+  };
 
   return (
     <div style={{margin: `55px 0`}}>
@@ -104,6 +118,7 @@ const ContactForm = () => {
         data-netlify="true"
         onSubmit={handleSubmit}
       >
+        {/* <input type="hidden" name="form-name" value="contact" /> */}
         <TextField
           id="standard-textarea"
           label="Name"
