@@ -84,8 +84,7 @@ const ContactForm = () => {
     setFormValues({...formValues, [name]: value})
   }
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = () => {
     setIsSubmitted(true);
     setFormValues({
       name: '',
