@@ -21,11 +21,8 @@ const StyledEpisode = styled.div`
   }
 `;
 
-const SingleEpisode = ({title, date, __html, audio}) => {
-  console.log(audio, "AUDIO")
-  return (
+const SingleEpisode = ({title, date, __html, audio}) => (
     <div style={{maxWidth: 860, margin: `0 auto`}}>
-      <br />
       <br />
       <h1 style={{fontWeight: `400`,color: `teal`}}>{title}</h1>
       <h4 style={{fontWeight: `200`}}>{date}</h4>
@@ -38,6 +35,5 @@ const SingleEpisode = ({title, date, __html, audio}) => {
       <ContactForm />
     </div>
   );
-}
 
 export default SingleEpisode;
