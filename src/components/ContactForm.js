@@ -85,12 +85,14 @@ const ContactForm = () => {
       <Form 
         className={classes.root} 
         noValidate autoComplete="off" 
-        netlify
+        method="POST" 
+        data-netlify="true"
         onSubmit={handleSubmit}
       >
         <TextField
           id="standard-textarea"
           label="Name"
+          name="name"
           placeholder="Geralt of Rivia"
           multiline
           style={{width: `100%`}}
@@ -98,6 +100,7 @@ const ContactForm = () => {
         <TextField
           id="standard-textarea"
           label="Email"
+          name="email"
           placeholder="geralt@riv.ia"
           multiline
           style={{width: `100%`}}
@@ -105,6 +108,7 @@ const ContactForm = () => {
         <TextField
           id="outlined-textarea"
           label="Message"
+          name="message"
           placeholder="Good luck on the path..."
           multiline
           variant="outlined"
