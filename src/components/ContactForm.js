@@ -110,7 +110,7 @@ const ContactForm = () => {
           variant="outlined"
           style={{width: `100%`, marginTop: `25px`}}
         />
-        <SubmitButton onClick={handleSubmit}>Submit </SubmitButton>
+        <SubmitButton type="submit">Submit </SubmitButton>
       </Form>
       {isSubmitted && 
         <p style={{fontFamily: `Helvetica`, marginLeft: `5px`}}>Wooh!  Thanks for contacting Steel & Silver ⚔️</p>
