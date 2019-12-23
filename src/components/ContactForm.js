@@ -32,7 +32,6 @@ const Form = styled.form`
   }
 `;
 
-
 const SubmitButton = styled.button`
   background: rgb(242,242,242);
   display: block;
@@ -72,7 +71,7 @@ const SubmitButton = styled.button`
 
 const ContactForm = () => {
   const classes = useStyles();
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  // const [isSubmitted, setIsSubmitted] = useState(false);
   const [formValues, setFormValues] = useState({
     name: '',
     email: '',
@@ -97,13 +96,18 @@ const ContactForm = () => {
       body: encode({ "form-name": "contact", ...formValues })
     })
       .catch(error => alert(error));
-    
-    setIsSubmitted(true);
+
+    document.getElementById('submitted').style.opacity = 1;
+
     setFormValues({
       name: '',
       email: '',
       message: ''
     })
+
+    setTimeout(() => {
+      document.getElementById('submitted').style.opacity = 0;
+    }, 3000)
     e.preventDefault();
   };
 
@@ -151,9 +155,7 @@ const ContactForm = () => {
         />
         <SubmitButton type="submit">Submit </SubmitButton>
       </Form>
-      {isSubmitted && 
-        <p style={{fontFamily: `Helvetica`, marginLeft: `5px`}}>Wooh!  Thanks for contacting Steel & Silver ⚔️</p>
-      }
+      <p id="submitted" style={{opacity: 0, fontFamily: `Helvetica`, marginLeft: `5px`, transition: `0.3s ease`}}>Wooh!  Thanks for contacting Steel & Silver ⚔️</p>
     </div>
   );
 }
