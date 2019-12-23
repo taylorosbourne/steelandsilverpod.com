@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -72,11 +72,12 @@ const SubmitButton = styled.button`
 
 const ContactForm = () => {
   const classes = useStyles();
-  const [value, setValue] = React.useState('Controlled');
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = event => {
-    setValue(event.target.value);
-  };
+  const handleSubmit = e => {
+    e.preventDefault();
+    setIsSubmitted(true);
+  }
 
   return (
     <div style={{margin: `55px 0`}}>
@@ -84,6 +85,8 @@ const ContactForm = () => {
       <Form 
         className={classes.root} 
         noValidate autoComplete="off" 
+        netlify
+        onSubmit={handleSubmit}
       >
         <TextField
           id="standard-textarea"
@@ -107,14 +110,11 @@ const ContactForm = () => {
           variant="outlined"
           style={{width: `100%`, marginTop: `25px`}}
         />
-        <SubmitButton onClick={e => e.preventDefault()}>Submit </SubmitButton>
+        <SubmitButton onClick={handleSubmit}>Submit </SubmitButton>
       </Form>
-      {/* <Form>
-        <ContactInput type="text" placeholder="name" />
-        <ContactInput type="email" placeholder="email" />
-        <ContactMessage placeholder="good luck on the path..."></ContactMessage>
-        <SubmitButton onClick={e => e.preventDefault()}>Submit </SubmitButton>
-      </Form> */}
+      {isSubmitted && 
+        <p style={{fontFamily: `Helvetica`, marginLeft: `5px`}}>Wooh!  Thanks for contacting Steel & Silver ⚔️</p>
+      }
     </div>
   );
 }

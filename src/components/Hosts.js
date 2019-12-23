@@ -24,6 +24,7 @@ const HostCard = styled.div`
     border-radius: 50%;
     height: 125px;
     width: 125px;
+    border: 2px solid teal;
   }
   @media(max-width: 800px) {
     width: 100%;
