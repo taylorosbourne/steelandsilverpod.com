@@ -73,39 +73,39 @@ const SubmitButton = styled.button`
 const ContactForm = () => {
   const classes = useStyles();
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formValues, setFormValues] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  // const [formValues, setFormValues] = useState({
+  //   name: '',
+  //   email: '',
+  //   message: ''
+  // });
 
-  const encode = (data) => {
-    return Object.keys(data)
-        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-        .join("&");
-  }
+  // const encode = (data) => {
+  //   return Object.keys(data)
+  //       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+  //       .join("&");
+  // }
 
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setFormValues({...formValues, [name]: value})
-  }
+  // const handleChange = e => {
+  //   const { name, value } = e.target;
+  //   setFormValues({...formValues, [name]: value})
+  // }
 
-  const handleSubmit = e => {
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", ...formValues })
-    })
-      .catch(error => alert(error));
+  // const handleSubmit = e => {
+  //   fetch("/", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //     body: encode({ "form-name": "contact", ...formValues })
+  //   })
+  //     .catch(error => alert(error));
     
-    setIsSubmitted(true);
-    setFormValues({
-      name: '',
-      email: '',
-      message: ''
-    })
-    e.preventDefault();
-  };
+  //   setIsSubmitted(true);
+  //   setFormValues({
+  //     name: '',
+  //     email: '',
+  //     message: ''
+  //   })
+  //   e.preventDefault();
+  // };
 
   return (
     <div style={{margin: `55px 0`}}>
@@ -116,17 +116,17 @@ const ContactForm = () => {
         noValidate autoComplete="off" 
         method="POST" 
         data-netlify="true"
-        onSubmit={handleSubmit}
+        // onSubmit={handleSubmit}
       >
-        {/* <input type="hidden" name="form-name" value="contact" /> */}
+        <input type="hidden" name="form-name" value="contact" />
         <TextField
           id="standard-textarea"
           label="Name"
           name="name"
           placeholder="Geralt of Rivia"
           multiline
-          onChange={handleChange}
-          value={formValues.name}
+          // onChange={handleChange}
+          // value={formValues.name}
           style={{width: `100%`}}
         />
         <TextField
@@ -135,8 +135,8 @@ const ContactForm = () => {
           name="email"
           placeholder="geralt@riv.ia"
           multiline
-          onChange={handleChange}
-          value={formValues.email}
+          // onChange={handleChange}
+          // value={formValues.email}
           style={{width: `100%`}}
         />
         <TextField
@@ -145,8 +145,8 @@ const ContactForm = () => {
           name="message"
           placeholder="Good luck on the path..."
           multiline
-          onChange={handleChange}
-          value={formValues.message}
+          // onChange={handleChange}
+          // value={formValues.message}
           variant="outlined"
           style={{width: `100%`, marginTop: `25px`}}
         />
