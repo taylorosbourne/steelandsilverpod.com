@@ -20,7 +20,7 @@ export default IndexPage
 
 export const RECENT_EPISODES_QUERY = graphql`
   query RECENT_EPISODES_QUERY {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 3) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 4) {
       edges {
         node {
           id
