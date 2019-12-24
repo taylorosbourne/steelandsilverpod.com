@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import Layout from '../components/layout';
 
 const EpisodeContainer = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
   * {
