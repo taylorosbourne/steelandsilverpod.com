@@ -1,11 +1,21 @@
-import React from "react"
+import React, { FC } from 'react';
 import { graphql } from 'gatsby';
-import { siteMetadata } from '../../gatsby-config';
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import IndexContainer from "../components/IndexContainer"
 
-const IndexPage = ({data}) => {
+import { siteMetadata } from '../../gatsby-config';
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import IndexContainer from '../components/IndexContainer';
+
+interface Props {
+  data: {
+    allMarkdownRemark: {
+      edges
+    }
+  }
+};
+
+
+const IndexPage: FC<Props> = ({data}) => {
   const episodes = data.allMarkdownRemark.edges;
   const { title } = siteMetadata;
   return (
@@ -13,10 +23,10 @@ const IndexPage = ({data}) => {
       <SEO title={title} />
       <IndexContainer episodes={episodes} />
     </Layout>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;
 
 export const RECENT_EPISODES_QUERY = graphql`
   query RECENT_EPISODES_QUERY {

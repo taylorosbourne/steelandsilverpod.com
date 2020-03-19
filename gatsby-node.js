@@ -13,11 +13,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 };
 
-exports.createPages = ({ actions, graphql }) => {
+exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
-  const episodeTemplate = path.resolve('src/templates/Episode.js');
+  const episodeTemplate = path.resolve('src/templates/Episode.tsx');
 
-  return graphql(`
+  const { data, errors } = await graphql(`
     {
       allMarkdownRemark {
         edges {
@@ -35,18 +35,18 @@ exports.createPages = ({ actions, graphql }) => {
         }
       }
     }
-  `).then(res => {
-    if (res.errors) {
-      return Promise.reject(res.errors);
-    }
+  `)
 
-    res.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      const posts = res.data.allMarkdownRemark.edges;
-      posts.forEach(({ node }) => {
-        createPage({
-          path: node.frontmatter.path,
-          component: episodeTemplate,
-        });
+  if (errors) {
+    return Promise.reject(errors);
+  };
+
+  data.allMarkdownRemark.edges.forEach(({ node }) => {
+    const episodes = data.allMarkdownRemark.edges;
+    episodes.forEach(({ node }) => {
+      createPage({
+        path: node.frontmatter.path,
+        component: episodeTemplate,
       });
     });
   });

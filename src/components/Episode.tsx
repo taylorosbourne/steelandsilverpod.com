@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 
 const StyledEpisode = styled.div`
@@ -11,7 +11,11 @@ const StyledEpisode = styled.div`
   }
 `;
 
-const Episode = ({children}) => (
+interface Props {
+  children: any;
+}
+
+const Episode: FC<Props> = ({children}) => (
   <StyledEpisode>
     {children}
   </StyledEpisode>

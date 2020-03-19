@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, FC } from 'react';
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -69,9 +69,8 @@ const SubmitButton = styled.button`
   }
 `;
 
-const ContactForm = () => {
-  const classes = useStyles();
-  // const [isSubmitted, setIsSubmitted] = useState(false);
+const ContactForm: FC = () => {
+  const classes = useStyles('');
   const [formValues, setFormValues] = useState({
     name: '',
     email: '',
@@ -97,7 +96,7 @@ const ContactForm = () => {
     })
       .catch(error => alert(error));
 
-    document.getElementById('submitted').style.opacity = 1;
+    document.getElementById('submitted').style.opacity = '1';
 
     setFormValues({
       name: '',
@@ -106,7 +105,7 @@ const ContactForm = () => {
     })
 
     setTimeout(() => {
-      document.getElementById('submitted').style.opacity = 0;
+      document.getElementById('submitted').style.opacity = '0';
     }, 3000)
     e.preventDefault();
   };
@@ -155,7 +154,7 @@ const ContactForm = () => {
         />
         <SubmitButton type="submit">Submit </SubmitButton>
       </Form>
-      <p id="submitted" style={{opacity: 0, fontFamily: `Helvetica`, marginLeft: `5px`, transition: `0.3s ease`}}>Wooh!  Thanks for contacting Steel & Silver ⚔️</p>
+      <p id="submitted" style={{opacity: 0, fontFamily: `Helvetica`, marginLeft: `5px`, transition: `0.3s ease`}}>Wooh!  Thanks for contacting Steel & Silver <span role="img" aria-label="emoji">⚔️</span></p>
     </div>
   );
 }

@@ -1,6 +1,7 @@
-import React from 'react';
-import { Link } from "gatsby"
+import React, { FC } from 'react';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
+
 import Signs from '../images/signs.png';
 
 const StyledNav = styled.nav`
@@ -43,9 +44,11 @@ const StyledNav = styled.nav`
 `;
 
 
-const Nav = () => (
+const Nav: FC = () => (
   <StyledNav>
-    <Link to="/"><img style={{height: `50px`, margin: `15px auto`}} src={Signs} alt="signs" /></Link>
+    <Link to="/">
+      <img style={{ height: `50px`, margin: `15px auto` }} src={Signs} alt="signs" />
+    </Link>
   </StyledNav>
 );
 

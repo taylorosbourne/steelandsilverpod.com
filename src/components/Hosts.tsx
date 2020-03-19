@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
+import styled from 'styled-components';
+
 import Charlie from '../images/charlie.jpg';
 import Taylor from '../images/taylor.jpg';
-import styled from 'styled-components';
 
 const HostContainer = styled.div`
   width: 70%;
@@ -46,7 +47,7 @@ const HostSocial = styled.a`
   font-size: 0.8rem;
 `;
 
-const Hosts = () => (
+const Hosts: FC = () => (
   <div style={{margin: `35px 0`}}>
     <h2 className="section-header">Hosts</h2>
     <HostContainer>
