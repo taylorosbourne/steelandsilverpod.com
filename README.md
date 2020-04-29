@@ -1,6 +1,7 @@
 # Steel & Silver: A Witcher Podcast ⚔️
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/574a3118-520c-4c31-8c19-cd4e0d7b9700/deploy-status)](https://app.netlify.com/sites/steelandsilverpod/deploys)
+[![License: MIT](https://img.shields.io/github/license/taylorosbourne/taylorosbourne.com?style=flat-square&color=blue)](https://taylorosbourne.com)
+[![Netlify Status](https://img.shields.io/netlify/574a3118-520c-4c31-8c19-cd4e0d7b9700?style=flat-square)](https://app.netlify.com/sites/taylorosbourneportfolio/deploys)
 
 ## Contact
 
